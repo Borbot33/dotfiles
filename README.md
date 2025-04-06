@@ -5,3 +5,4 @@
 - xborder
 - kitty
 - picom
+- autotiling
