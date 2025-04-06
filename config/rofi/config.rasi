@@ -1,0 +1,108 @@
+configuration {
+	show-icons: true;
+}
+
+* {
+    background-col: #121212;
+    second-background-col: #262525;
+
+    foreground-col: #ffffff;
+    separator-col: #ffffff;
+
+    /* it's needed (don't edit) */
+    background-color: @background-col;
+}
+
+window {
+    background-color: @separator-col;
+    padding:          1;
+    width: 30%;
+}
+
+mainbox {
+    border:  0;
+    padding: 10;
+}
+
+textbox {
+    text-color: @foreground-col;
+}
+
+listview {
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    border-color: @separator-col;
+    spacing:      2px;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+
+element {
+    border:  0;
+    padding: 1px;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+element.selected.normal,
+element.selected.active {
+    background-color: @second-background-col;
+    text-color:       @foreground-col;
+}
+
+element.normal.normal,
+element.normal.active,
+element.selected.urgent,
+element.alternate.normal,
+element.alternate.urgent,
+element.alternate.active {
+    background-color: @background-col;
+    text-color: @foreground-col;
+}
+
+scrollbar {
+    width: 4px;
+    border: 0;
+    padding: 0;
+
+    handle-width: 8px;
+    handle-color: @separator-col;
+    background-color: @second-background-col;
+}
+
+mode-switcher {
+    border: 2px dash 0px 0px ;
+    border-color: @separator-col;
+}
+
+button.selected {
+    background-color: @second-background-col;
+    text-color: @second-background-col;
+}
+
+inputbar {
+    spacing: 0;
+    text-color: @foreground-col;
+    padding: 1px;
+}
+
+case-indicator,
+entry,
+prompt {
+    spacing:    0;
+    text-color: @foreground-col;
+}
+
+inputbar {
+    children: [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @foreground-col;
+}

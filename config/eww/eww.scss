@@ -1,0 +1,45 @@
+* {
+  all: unset;
+  font-size:15px;
+  font-family: "0xProto Nerd Font Propo";
+}
+
+// Global Styles
+.bar {
+  color: #ffffff;
+  margin: 10px 18px 10px 18px;
+}
+
+.center, .right, .left {
+  all: unset;
+}
+
+.workspaces,
+.tray,
+.time,
+.powerbutton {
+  background-color: #121212;
+  color: #ffffff;
+  padding: 10px 18px 10px 18px;
+  border-radius: 12px;
+  background-color: #121212;
+  margin-right: 10px;
+}
+
+.powermenu {
+  background-color: #121212;
+  margin: 5px;
+  border-radius: 18px;
+}
+
+.powerbutton {
+	margin-right: 0;
+}
+
+.workspaces button {
+  padding: 0px 5px 0px 5px;
+}
+
+.workspaces .unfocused {
+  color: #2e3436;
+}
