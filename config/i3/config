@@ -39,15 +39,18 @@ exec --no-startup-id autotiling
 
 #important
 exec --no-startup-id sleep 2 && blueman-applet
+exec --no-startup-id dunst
 exec --no-startup-id picom
-exec --no-startup-id xborders -c ~/.config/xborder/config.json 
+
 # wallpaper & customizastions
 exec --no-startup-id feh --bg-scale /home/borbot/Pictures/Wallpapers/planet-ocean.jpg
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+set $dunst_progress volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}') && dunstify -h string:x-canonical-private-synchronous:audio "Volume Controls" "Volume changed to $volume%" -h int:value:$volume
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $dunst_progress
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $dunst_progress
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -159,7 +162,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-default_border pixel 0
+default_border pixel 2
 gaps inner 18
 
 client.focused #ffffff #ffffff #ffffff #ffffff #ffffff
