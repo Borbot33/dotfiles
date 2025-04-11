@@ -1,8 +1,9 @@
 # PACKAGES
-- i3wm
-- rofi
+- i3
 - eww
-- xborder
+- feh
+- rofi
+- dunst
 - kitty
 - picom
 - autotiling
