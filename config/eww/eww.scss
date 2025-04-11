@@ -24,22 +24,46 @@
   border-radius: 12px;
   background-color: #121212;
   margin-right: 10px;
+  border: 2px solid #ffffff;
 }
 
-.powermenu {
-  background-color: #121212;
-  margin: 5px;
-  border-radius: 18px;
-}
-
-.powerbutton {
-	margin-right: 0;
-}
-
+// WORKSPACES
 .workspaces button {
   padding: 0px 5px 0px 5px;
 }
 
 .workspaces .unfocused {
   color: #2e3436;
+}
+
+// POWER BUTTON
+.powerbutton {
+	margin-right: 0;
+}
+
+// POWER MENU
+.powermenu {
+  all: unset;
+  background-color: #121212;
+  label {
+    font-size: 100px;
+  }
+}
+
+.powermenuitems button {
+  padding: 50px 70px 50px 70px;
+  margin: 0;
+  border-radius: 15px;
+  background-color: rgb(32, 33, 34);
+  border: 2px solid #ffffff;
+}
+
+.powermenuclose {
+  background-color: rgb(32, 33, 34);
+  padding: 10px 25px 10px 25px;
+  border-radius: 12px;
+  label {
+    font-size: 35px;
+  }
+  border: 2px solid #ffffff;
 }
