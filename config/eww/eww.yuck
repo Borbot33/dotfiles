@@ -1,5 +1,12 @@
 (deflisten workspace "bash ./scripts/workspaces.sh")
-(defpoll time :interval "10s" "date '+%H:%M'")
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll volume :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $2 * 100}'")
+
+; VOLUME MANAGER
+(defpoll music-status :initial "" :interval "1s" "bash scripts/music.sh status")
+(deflisten music :initial "{\"title\": \"Not found\", \"artist\": \"Not found\"}" "bash scripts/music.sh listen")
+
+(defpoll music-percentage :interval "1s" "bash ./scripts/music.sh percentage")
 
 ; BAR
 (defwidget bar []
@@ -33,7 +40,7 @@
       :space-evenly false 
       :halign "end"
    (systemtray)
-   (powerbutton)
+   (rightbox)
 ))
 
 (defwidget workspaces []
@@ -52,13 +59,29 @@
 	)
 )
 
+(defwidget rightbox []
+	(box :orientation "h" 
+    :class "rightbox" 
+    :halign "center"
+    :spacing 10
+    (sound)
+    (powerbutton)
+  )
+)
+
 (defwidget powerbutton []
-	(box :orientation "v" :halign "center"
+	(box :orientation "h" :halign "center"
     (button :class "powerbutton" :onclick "eww active-windows | grep -q 'powermenu' && eww close powermenu || eww open powermenu" "⏻")
   )
 )
 
-; POWER MENU V2
+(defwidget sound []
+	(box :orientation "h" :halign "center"
+    (button :class "powerbutton" :onclick "eww active-windows | grep -q 'volumemanager' && eww close volumemanager || eww open volumemanager" "󰓃")
+  )
+)
+
+; POWER MENU
 (defwidget powermenu []
   (box :orientation "v"
     :space-evenly false
@@ -82,11 +105,79 @@
     :orientation "h"
     :space-evenly false
     :halign "center"
-    :spacing 30
+    :spacing 15
     (button :onclick "shutdown -h 0" "")
     (button :onclick "reboot" "")
     (button :onclick "i3-msg exit" "󰗽")
   )
+)
+
+; VOLUME MANAGER
+(defwidget volumemanager []
+  (box :orientation "v"
+    (volumemanageritems)
+  )
+)
+
+(defwidget volumemanageritems []
+  (box :class "volumemanageritems"
+    :orientation "v"
+    :space-evenly false
+    :halign "end"
+    :spacing 13
+    (box :orientation "h"
+      :class "close-button"
+      :space-evenly false
+      :halign "end"
+      (button :onclick "eww close volumemanager" "")
+    )
+    (musicbox)
+    (box :orientation "h"
+      :class "metric"
+      :space-evenly false
+      :spacing 15
+      :halign "center"
+      (box :space-evenly true :class "volume-text" "${volume}%" )
+      (scale :min 0
+        :max 101
+        :active true
+        :value volume
+        :onchange "pactl -- set-sink-volume 0 {}%"
+      )
+    )
+  )
+)
+
+(defwidget musicbox []
+  (box :orientation "v"
+    :space-evenly false
+    :spacing 12
+    :halign "center"
+    :valign "center"
+    (button :class "musicart" :style "background-image: url('${music.cover}');")
+    (label :halign "center" :class "music-song" :wrap "true" :limit-width 20 :text {music.title})
+    (label :halign "center" :class "music-artist" :wrap "true" :limit-width 15 :text {music.artist})
+    (box :orientation "h"
+      :class "music-progress"
+      :space-evenly false
+      :spacing 10
+      :halign "center"
+      (scale :min 0
+        :class "music-progress"
+        :max 101
+        :active false
+        :value music-percentage
+        :onchange ""
+      )
+    )
+    (box :orientation "h"
+      :class "music-control"
+      :spacing 10
+      (button :onclick "playerctl previous" "")
+      (button :onclick "playerctl play-pause" music-status)
+      (button :onclick "playerctl next" "")
+    )
+  ) 
 )
 
 ; CUSTOM WINDOWS
@@ -118,4 +209,17 @@
             )
   :wm-ignore true
   (powermenu)
+)
+
+(defwindow volumemanager
+  :monitor 0
+  :windowtype "dock"
+  :exclusive false
+  :geometry (geometry
+      :x "0%"   
+      :y "65px"
+      :anchor "top center"
+    )
+  :wm-ignore true
+  (volumemanager)
 )
