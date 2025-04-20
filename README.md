@@ -1,9 +1,9 @@
 # PACKAGES
 - i3
-- eww
 - feh
 - rofi
-- dunst
 - kitty
+- dunst
 - picom
 - autotiling
+- i3status-rust
