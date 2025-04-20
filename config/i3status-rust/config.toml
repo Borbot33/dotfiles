@@ -1,0 +1,20 @@
+[theme]
+theme = "ctp-frappe"
+[theme.overrides]
+separator = "<span font='16'></span>"
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "music"
+
+[[block]]
+block = "sound"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 5
+format = "$timestamp.datetime(f:'%R ')"
