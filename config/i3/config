@@ -62,11 +62,8 @@ bindsym $mod+space exec --no-startup-id rofi -show drun
 # screenshots
 bindsym $mod+Shift+Print exec spectacle --region -o ~/Pictures/Screenshots/Screenshot_$(date +"%Y%m%d_%H%M%S").png
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+#lock the pc
+bindsym $mod+l exec bash ~/.config/i3/lock.sh
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -133,11 +130,11 @@ bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -190,7 +187,7 @@ bar {
 	}
 }
 
-default_border pixel 2
-gaps inner 8
+default_border pixel 3
+gaps inner 5
 
-client.focused #ffffff #ffffff #ffffff #ffffff #ffffff
+client.focused #51576d #51576d #51576d #51576d #51576d #51576d
