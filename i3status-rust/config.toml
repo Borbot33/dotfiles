@@ -1,0 +1,44 @@
+[theme]
+theme = "ctp-frappe"
+[theme.overrides]
+separator = "<span font='16'></span>"
+
+[icons]
+icons = "awesome4"
+
+[[block]]
+block = "memory"
+format = " $icon $mem_used.eng(prefix:Mi)/$mem_total.eng(prefix:Mi) "
+
+[[block]]
+block = "sound"
+[block.theme_overrides]
+idle_bg = "#ca9ee6"
+idle_fg = "#303446"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "bluetooth"
+mac = "E8:48:B8:C8:20:00"
+disconnected_format = ""
+format = " $icon "
+[block.battery_state]
+"0..20" = "critical"
+"21..70" = "warning"
+"71..100" = "good"
+
+[[block]]
+block = "music"
+separator = " - "
+format = " $icon {$combo.str(max_w:20,rot_interval:0.5) $prev $play $next | currently empty} "
+[block.theme_overrides]
+idle_bg = "#ca9ee6"
+idle_fg = "#303446"
+
+[[block]]
+block = "time"
+interval = 5
+format = " $icon $timestamp.datetime(f:'%R') "
+
