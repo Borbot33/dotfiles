@@ -11,13 +11,6 @@ return {
 		opts = {
 			-- fill any relevant options here
 		},
-		config = function()
-			vim.api.nvim_create_autocmd('BufEnter', {
-				callback = function()
-					if vim.bo.buftype == '' then vim.cmd('Neotree close') end
-				end,
-			})
-		end
 	}
 }
 
