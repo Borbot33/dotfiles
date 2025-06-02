@@ -9,5 +9,6 @@
 - i3status-rust
 - ttf-0xproto-nerd
 
-# USED CONFIGURATIONS
+# USED THEMES
 - [Alacritty Catppuccin](https://github.com/catppuccin/alacritty?tab=MIT-1-ov-file)
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
