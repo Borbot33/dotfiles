@@ -28,4 +28,4 @@ require("lazy").setup({
 vim.cmd.colorscheme "catppuccin-frappe"
 vim.wo.relativenumber = true
 
-require("keymaps")
+require("vim-options")
