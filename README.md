@@ -5,7 +5,6 @@
 - picom
 - nitrogen
 - alacritty
-- autotiling
 - i3status-rust
 - ttf-0xproto-nerd
 
