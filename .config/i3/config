@@ -4,7 +4,7 @@ font pango:monospace 8
 
 exec --no-startup-id picom
 exec --no-startup-id dunst
-exec --no-startup-id nitrogen --restore & 
+exec --no-startup-id feh --bg-scale /mnt/enderchest/Wallpapers/cabin-3.png
 exec --no-startup-id udiskie
 
 # Use pactl to adjust volume in PulseAudio.
