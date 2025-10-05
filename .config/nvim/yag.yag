@@ -1,6 +1,0 @@
-{{$meow := "test"}}
-{{if eq $meow "meow"}}
-	{{if $meow}}
-
-	{{end}}
-{{end}}
