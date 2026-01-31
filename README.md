@@ -1,14 +1,15 @@
 # Software
-| Purpose        | Package           |
-|----------------|-------------------|
-| Terminal       | alacritty         |
-| Window Manager | i3                |
-| Bar            | i3status-rust     |
-| App Launcher   | rofi              |
-| Font           | ttf-0xproto-nerd  |
-| Notifications  | dunst             |
-| Compositor     | picom             |
-| Text editor    | neovim            |
+| Purpose        | Package                               |
+|----------------|---------------------------------------|
+| Terminal       | alacritty                             |
+| Window Manager | i3                                    |
+| Bar            | i3status-rust                         |
+| App Launcher   | rofi                                  |
+| Font           | ttf-0xproto-nerd                      |
+| Notifications  | dunst                                 |
+| Compositor     | picom                                 |
+| Text editor    | neovim                                |
+| Color Scheme   | [Catppuccin](https://catppuccin.com/) |
 
 # Used themes
 - [Alacritty Catppuccin](https://github.com/catppuccin/alacritty?tab=MIT-1-ov-file)
