@@ -1,7 +1,7 @@
 [theme]
 theme = "ctp-frappe"
 [theme.overrides]
-separator = "<span font='16'></span>"
+separator = "<span font='15'></span>"
 
 [icons]
 icons = "awesome4"
